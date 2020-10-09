@@ -42,7 +42,7 @@ app.post("/transaction", async (req,res) => {
     }
 })
 
-app.delete("/transactions", async (req,res) => {
+app.delete("/transactionss", async (req,res) => {
     try{
         let client = await mongodb.connect(url,{ useUnifiedTopology: true });
         let db = await client.db("money-manager-app")
