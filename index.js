@@ -11,8 +11,8 @@ app.use(cors());
 app.get("/transactions",async (req,res) => {
     try {
         let client = await mongodb.connect(url,{ useUnifiedTopology: true });
-        let db = client.db("money-manager-app")
-        let data = await db.collection("transaction").find().toArray();
+        let db = client.db("database")
+        let data = await db.collection("money-manager-app").find().toArray();
         client.close();
         res.json(data);
         console.log(data);
@@ -26,8 +26,8 @@ app.get("/transactions",async (req,res) => {
 app.post("/transaction", async (req,res) => {
     try{
         let client = await mongodb.connect(url,{ useUnifiedTopology: true });
-        let db = await client.db("money-manager-app")
-        let data=await db.collection("transaction").insertOne(req.body);
+        let db = await client.db("database")
+        let data=await db.collection("money-manager-app").insertOne(req.body);
         console.log(req.body);
         client.close()
            
@@ -45,8 +45,8 @@ app.post("/transaction", async (req,res) => {
 app.delete("/transactionss", async (req,res) => {
     try{
         let client = await mongodb.connect(url,{ useUnifiedTopology: true });
-        let db = await client.db("money-manager-app")
-        let data=await db.collection("transaction").deleteOne(req.body);
+        let db = await client.db("database")
+        let data=await db.collection("money-manager-app").deleteOne(req.body);
         console.log(req.body);
         client.close()
            
